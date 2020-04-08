@@ -1,29 +1,17 @@
 import React from 'react';
 import './App.css';
+import {usePosition} from './usePosition';
 
 function App() {
-
-  const Coordinate = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        return (
-          <pre>
-            { 
-              JSON.stringify(position, null, 2)
-            }
-          </pre>
-        );
-      });
-    } else {
-    return (
-      <h1>Non supportata.</h1>
-    );
-    }
-  }
-
+  const {latitude, longitude, error} = usePosition();
   return (
     <div className="App">
-      <Coordinate />
+      <h1>Test</h1>
+      <code>
+        latitude: {latitude}<br/>
+        longitude: {longitude}<br/>
+        error: {error}
+      </code>
     </div>
   );
 }
