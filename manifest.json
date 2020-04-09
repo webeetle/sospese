@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "SOSPESE",
+  "name": "Un'app per sapere dove donare",
   "icons": [
     {
       "src": "android-icon-36x36.png",
@@ -42,5 +42,5 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#62C79D"
 }
