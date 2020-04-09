@@ -38,7 +38,7 @@ export const usePosition = (watch = false, settings = defaultSettings) => {
     }
 
     return () => watcher && geo.clearWatch(watcher);
-  }, [settings]);
+  }, [watch, settings]);
 
   return {...position, error};
 };
