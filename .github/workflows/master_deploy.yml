@@ -21,5 +21,5 @@ jobs:
       run: |
         git config --global user.email "${{secrets.mail}}"
         git config --global user.name "${{secrets.name}}"
-        git remote set-url origin https://${{secrets.token}}@github.com/${{secrets.mail}/sospese.git
+        git remote set-url origin https://${{secrets.token}}@github.com/${{secrets.mail}}/sospese.git
         npm run deploy
