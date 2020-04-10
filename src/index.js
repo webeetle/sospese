@@ -1,13 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
-import App from './App'
 import * as serviceWorker from './serviceWorker'
+import { CssBaseline, ThemeProvider } from '@material-ui/core'
+import { theme } from './theme'
+import { createStore } from './stores'
+import { Provider } from 'mobx-react'
+import Router from './router'
 
+const store = createStore()
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <ThemeProvider theme={theme}>
+      <CssBaseline/>
+      <Router />
+    </ThemeProvider>
+  </Provider>,
   document.getElementById('root')
 )
 
