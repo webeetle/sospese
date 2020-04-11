@@ -10,9 +10,19 @@ const theme = createMuiTheme({
     },
     secondary: {
       main: '#404ea7',
-      light: '#747ad9',
+      light: '#C5CAE9',
       dark: '#002677',
       contrastText: '#fff'
+    },
+    background: {
+      default: '#404ea7'
+    }
+  },
+  overrides: {
+    MuiPaper: {
+      rounded: {
+        borderRadius: 10
+      }
     }
   }
 })
