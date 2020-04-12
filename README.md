@@ -2,12 +2,12 @@
     <img src="https://raw.githubusercontent.com/webeetle/sospese/master/logo.svg?sanitize=true"
         height="130">
 </p>
-<p align="center">
+<div align="center">
  
 ![Build & Deploy](https://github.com/webeetle/sospese/workflows/Build%20&%20Deploy/badge.svg)
 [![issues](https://badgen.net/github/issues/webeetle/sospese)](https://github.com/webeetle/sospese/issues)
 [![license](https://badgen.net/github/license/webeetle/sospese)](./LICENSE)
-</p>
+</div>
 
 ---
 
