@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![MasterDeployCI](https://github.com/webeetle/sospese/workflows/MasterDeployCI/badge.svg)
+![Build & Deploy](https://github.com/webeetle/sospese/workflows/Build%20&%20Deploy/badge.svg)
 [![issues](https://badgen.net/github/issues/webeetle/sospese)](https://github.com/webeetle/sospese/issues)
 [![license](https://badgen.net/github/license/webeetle/sospese)](./LICENSE)
 </div>
