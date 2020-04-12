@@ -1,4 +1,4 @@
-name: MasterDeployCI
+name: Build & Deploy
 
 on:
   push:
