@@ -1,16 +1,16 @@
-# SOSPESE
-
-<div align="center">
-
+<p align="center">
+    <img src="https://raw.githubusercontent.com/webeetle/sospese/master/logo.svg?sanitize=true"
+        height="130">
+</p>
+<p align="center">
+ 
 ![Build & Deploy](https://github.com/webeetle/sospese/workflows/Build%20&%20Deploy/badge.svg)
 [![issues](https://badgen.net/github/issues/webeetle/sospese)](https://github.com/webeetle/sospese/issues)
 [![license](https://badgen.net/github/license/webeetle/sospese)](./LICENSE)
-</div>
+</p>
 
+---
 
-L'App SOSpese (PWA) si pone l'obiettivo di creare un punto informativo unico e chiaro di tutti i "punti" dove è possibile effettuare una donazione di tipo "alimentare".
-Le "target personas" sono principalmente due:
-1) Chi ha intenzione di donare
-2) Chi ha bisogno di generi alimentari di prima necessità
+## Mission
 
-Si considera poi un soggetto 3 che si configura come colui che segnala un nuovo punto "sospeso"
+Sospese è un progetto che mette in contatto persone che vogliono donare con persone che hanno bisogno di sostegno. Un contenitore di segnalazioni di punti di raccolta e di ritiro di “cose sospese”, beni e servizi acquistati e lasciati a disposizione di chi ne ha bisogno.
