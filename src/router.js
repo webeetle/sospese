@@ -1,22 +1,27 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
-import { HomePage } from './pages/home/home.page'
+import HomePage from './pages/home/home.page'
 import Template from './components/Template/template.component'
-import { TestPage } from './pages/test/test.page'
+import SearchPage from './pages/search/search.page'
+import MapPage from './pages/map/map.page'
 
-const routes = [
-  {
-    path: '/',
-    component: HomePage
-  },
-  {
-    path: '/test',
-    component: TestPage
-  }
-]
+function Router (props) {
+  const routes = [
+    {
+      path: '/',
+      component: HomePage
+    },
+    {
+      path: '/search',
+      component: SearchPage
+    },
+    {
+      path: '/map',
+      component: MapPage
+    }
+  ]
 
-function Router () {
   const routeComponents = routes.map(({ path, component }, key) => <Route exact path={path} component={component}
                                                                           key={key}/>)
   return (

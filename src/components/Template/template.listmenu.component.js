@@ -11,7 +11,7 @@ const paths = [
   },
   {
     name: 'cerca un punto',
-    href: '/test'
+    href: '/search'
   },
   {
     name: 'ho donato',

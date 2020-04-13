@@ -10,7 +10,8 @@ const Store = types.model('Store', {
 const createStore = (objToInject) => {
   return Store.create({
     utility: {
-      snackbar: {}
+      snackbar: {},
+      locationStore: {}
     },
     pages: {
       home: {}
