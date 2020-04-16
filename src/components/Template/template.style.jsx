@@ -4,7 +4,8 @@ export const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     minHeight: '100%',
-    width: '100%',
+    maxWidth: '800px',
+    margin: '0 auto',
     background: theme.palette.secondary.main,
     paddingTop: 104,
     overflowX: 'hidden'

@@ -14,7 +14,9 @@ const createStore = (objToInject) => {
       locationStore: {}
     },
     pages: {
-      home: {}
+      home: {},
+      point: {},
+      map: {}
     }
   }, objToInject)
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useStyles } from './map.style'
 import { Button, Grid, List, ListItem, Typography } from '@material-ui/core'
 import GoogleMapReact from 'google-map-react'
@@ -7,55 +7,26 @@ import { PropTypes } from 'prop-types'
 import { withRouter } from 'react-router'
 import { inject, observer } from 'mobx-react'
 
-const points = [
-  {
-    address: 'Via Semetelle, 26 Angri (SA)',
-    location: {
-      type: 'Point',
-      coordinates: [14.5714279, 40.7436949]
-    },
-    lat: 40.7436949,
-    lng: 14.5714279,
-    name: 'WeBeetle S.r.l.',
-    note: '',
-    contacts: [
-      '3201934954',
-      'info@webeetle.com'
-    ],
-    locationPhotoUrl: 'http://...',
-    locationType: 'privato',
-    pointType: ['carrello', 'centro raccolta'],
-    categoryType: ['alimentari', 'pasti'],
-    createdAt: '2020-04-10T08:00:00',
-    updateddAt: '2020-04-10T08:00:00'
-  },
-  {
-    address: 'Via Risi, 12 Angri (SA)',
-    location: {
-      type: 'Point',
-      coordinates: [14.5720258, 40.7417721]
-    },
-    lat: 40.7417721,
-    lng: 14.5720258,
-    name: 'Peppe S.r.l.',
-    note: '',
-    contacts: [
-      '3201934954'
-    ],
-    locationPhotoUrl: 'http://...',
-    locationType: 'privato',
-    pointType: ['centro raccolta'],
-    categoryType: ['alimentari', 'pasti'],
-    createdAt: '2020-04-10T08:00:00',
-    updateddAt: '2020-04-10T08:00:00'
-  }
-]
+const bootstrap = {
+  key: constants.googleAPIKey,
+  language: 'it',
+  region: 'it'
+}
 
 const MapPage = (props) => {
   const classes = useStyles()
-  const { store: { utility: { locationStore } } } = props
+  const { history, store: { pages: { map: locationStore, point: pointStore } } } = props
   // eslint-disable-next-line no-unused-vars
   const [center, setCenter] = useState(null)
+
+  const defaultCenter = {
+    lat: locationStore.lat,
+    lng: locationStore.lng
+  }
+
+  useEffect(() => {
+    locationStore.getNearPoints()
+  }, [])
 
   const getIcon = (type) => {
     let src = ''
@@ -76,39 +47,49 @@ const MapPage = (props) => {
       case 'centro raccolta':
         src = '/icons/centro_raccolta_point.svg'
         break
+      default:
+        src = '/icons/cesto_point.svg'
+        break
     }
     return src
   }
 
   const formatListPoint = () => {
-    return points.map(item => {
+    return locationStore.points.length > 0 ? locationStore.points.map(item => {
       const type = item.pointType[0]
       const src = getIcon(type)
       return (
         <React.Fragment key={item._id}>
           <ListItem className={classes.item}>
-            <Grid container>
+            <Grid container spacing={1}>
               <Grid item xs={2}>
-                <img src={src}/>
+                <img src={src} style={{ width: 30 }}/>
               </Grid>
               <Grid item xs={6}>
                 <Typography className={'title'}>{item.name}</Typography>
-                <Typography className={'distance'}>distanza: 0.3 KM</Typography>
+                <Typography className={'distance'}>Distanza: {(item.dist.calculated / 1000).toFixed(2)} KM</Typography>
                 <Typography className={'address'}>{item.address}</Typography>
-                <Typography className={'contacts'}>{item.contacts.join(' - ')}</Typography>
+                <Typography className={'contacts'}>{item.contacts ? item.contacts.join(' - ') : ''}</Typography>
               </Grid>
               <Grid item xs={4}>
                 <Button fullWidth size={'small'} variant={'contained'} color={'secondary'}>Ho Donato</Button>
+                <Button fullWidth size={'small'} variant={'contained'} color={'primary'}
+                        style={{ marginTop: 10 }}
+                        onClick={() => {
+                          pointStore.setPoint(item)
+                          history.push(`/point/${item._id}`)
+                        }}
+                >Dettaglio</Button>
               </Grid>
             </Grid>
           </ListItem>
           <hr/>
         </React.Fragment>
       )
-    })
+    }) : null
   }
   const formatPoints = () => {
-    return points.map(item => {
+    return locationStore.points.map(item => {
       const type = item.pointType[0]
       const src = getIcon(type)
       const [lng, lat] = item.location.coordinates
@@ -128,19 +109,9 @@ const MapPage = (props) => {
       <Typography variant={'h6'} className={classes.titlePage}>Punti Sospesi</Typography>
       <div className={classes.map}>
         <GoogleMapReact
-          bootstrapURLKeys={{
-            key: constants.googleAPIKey,
-            language: 'it',
-            region: 'it'
-          }}
-          defaultCenter={{
-            lat: locationStore.lat,
-            lng: locationStore.lng
-          }}
-          center={center || {
-            lat: locationStore.lat,
-            lng: locationStore.lng
-          }}
+          bootstrapURLKeys={bootstrap}
+          defaultCenter={defaultCenter}
+          center={center || defaultCenter}
           defaultZoom={15}
         >
           {formatPoints()}

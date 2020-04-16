@@ -6,7 +6,7 @@ const constants = {
 
 // dev
 if (process.env.NODE_ENV === 'development') {
-  constants.api = 'http://localhost:3001'
+  constants.api = 'https://fcc10658.ngrok.io/api'
 }
 
 export { constants }

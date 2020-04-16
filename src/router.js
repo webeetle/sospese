@@ -5,6 +5,8 @@ import HomePage from './pages/home/home.page'
 import Template from './components/Template/template.component'
 import SearchPage from './pages/search/search.page'
 import MapPage from './pages/map/map.page'
+import PointPage from './pages/point/id/point.page'
+import ReportingPointPage from './pages/point/reporting/reportingpoint.page'
 
 function Router (props) {
   const routes = [
@@ -19,6 +21,14 @@ function Router (props) {
     {
       path: '/map',
       component: MapPage
+    },
+    {
+      path: '/point/reporting',
+      component: ReportingPointPage
+    },
+    {
+      path: '/point/:id',
+      component: PointPage
     }
   ]
 

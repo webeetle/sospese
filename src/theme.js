@@ -6,7 +6,7 @@ const theme = createMuiTheme({
       main: '#62c79d',
       light: '#95face',
       dark: '#2c966f',
-      contrastText: '#000'
+      contrastText: '#fff'
     },
     secondary: {
       main: '#404ea7',
@@ -22,6 +22,12 @@ const theme = createMuiTheme({
     MuiPaper: {
       rounded: {
         borderRadius: 10
+      }
+    },
+    MuiButton: {
+      contained: {
+        borderRadius: 8,
+        boxShadow: 'none'
       }
     }
   }

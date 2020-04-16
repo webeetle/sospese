@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useStyles } from './home.style'
 import { Button, ButtonGroup, MobileStepper, Paper, Typography } from '@material-ui/core'
 import { Search } from '@material-ui/icons'
@@ -14,7 +14,11 @@ const HomePage = (props) => {
     initial: 0,
     maxStep: 3
   })
-  const { history } = props
+  const { history, store: { pages: { home } } } = props
+
+  useEffect(() => {
+    home.getStats()
+  }, [])
 
   return (
     <div className={classes.root}>
@@ -30,7 +34,7 @@ const HomePage = (props) => {
       <div className={classes.buttonSection}>
         <ButtonGroup className={'actionButton'} variant="text" color="secondary">
           <Button>ho donato</Button>
-          <Button>segnala punto</Button>
+          <Button onClick={() => history.push('/point/reporting')}>segnala punto</Button>
         </ButtonGroup>
       </div>
 
@@ -78,11 +82,11 @@ const HomePage = (props) => {
 
       <div className={classes.counters}>
         <div>
-          <Typography variant={'h4'}>150</Typography>
+          <Typography variant={'h4'}>{home.points}</Typography>
           <Typography variant={'p'}>PUNTI SOSPESI</Typography>
         </div>
         <div>
-          <Typography variant={'h4'}>300</Typography>
+          <Typography variant={'h4'}>{home.donations}</Typography>
           <Typography variant={'p'}>DONATORI</Typography>
         </div>
       </div>

@@ -7,7 +7,7 @@ import { PropTypes } from 'prop-types'
 
 const SearchPage = (props) => {
   const classes = useStyles()
-  const { history, store: { utility: { locationStore } } } = props
+  const { history, store: { pages: { map: locationStore } } } = props
 
   return (
     <div className={classes.root}>
