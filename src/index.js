@@ -6,13 +6,15 @@ import { theme } from './theme'
 import { createStore } from './stores'
 import { Provider } from 'mobx-react'
 import Router from './router'
+import ReactGA from 'react-ga'
 
 const store = createStore()
+ReactGA.initialize('UA-1091978-71')
 ReactDOM.render(
   <Provider store={store}>
     <ThemeProvider theme={theme}>
       <CssBaseline/>
-      <Router />
+      <Router/>
     </ThemeProvider>
   </Provider>,
   document.getElementById('root')

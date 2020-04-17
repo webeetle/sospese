@@ -1,10 +1,10 @@
 import { types } from 'mobx-state-tree'
 import { SnackBarStore } from './snackbar.store'
-import { LocationStore } from './location.store'
+import { TypePointStore } from './typePoint.store'
 
 const UtilityStore = types.model('UtilityStore', {
   snackbar: SnackBarStore,
-  locationStore: LocationStore
+  typePoint: TypePointStore
 })
 
 export { UtilityStore }

@@ -2,74 +2,82 @@
 import React from 'react'
 import { useStyles } from './reportingpoint.style'
 import { Button, Grid, Paper, Typography } from '@material-ui/core'
+import { Field, Form } from 'react-final-form'
 import { PropTypes } from 'prop-types'
+import TextFieldWrapper from '../../../components/Form/Wrapper/textfield.form.wrapper.component'
+import GooglePlacesAutocomplete, { geocodeByPlaceId, getLatLng } from 'react-google-places-autocomplete'
+import { formatInput, formatSuggestion } from '../../../utils/google.utils'
 import { withRouter } from 'react-router'
 import { inject, observer } from 'mobx-react'
-import { Field, Form } from 'react-final-form'
-import TextFieldWrapper from '../../../components/Form/Wrapper/textfield.form.wrapper.component'
-import RadioGroupWrapper from '../../../components/Form/Wrapper/radiogroup.form.wrapper.component'
+import SelectWrapper from '../../../components/Form/Wrapper/select.form.wrapper.component'
+import { getTypePointSelect } from '../../../utils/point.utils'
 
 const ReportingPointPage = (props) => {
   const classes = useStyles()
-  // const { history, store: { pages: { point: pointStore } } } = props
+  const { history, store: { pages: { point } } } = props
+
+  const setLocation = (args, state, utils) => {
+    const location = args[0]
+    utils.changeValue(state, 'address', () => location.address.description)
+    utils.changeValue(state, 'lat', () => location.coords.lat)
+    utils.changeValue(state, 'lng', () => location.coords.lng)
+  }
+
+  const validate = (values) => {
+  }
+
+  const onSubmit = (values) => {
+    point.reportingPoint(values, ({ data }) => {
+      history.push('/grazie')
+    })
+  }
 
   return (
     <div className={classes.root}>
       <Paper rounded className={classes.container}>
         <Form
-          onSubmit={() => {
-          }}
-          validate={() => {
+          onSubmit={onSubmit}
+          validate={validate}
+          mutators={{
+            setLocation: setLocation
           }}
           render={({ values, form, handleSubmit }) => {
             return (
               <Grid container spacing={2}>
                 <Grid item xs={12}>
-                  <Typography variant={'h3'} className={classes.title}>Segnala punto</Typography>
+                  <Typography variant={'h3'} className={classes.title}>Segnala nuovo punto</Typography>
                 </Grid>
                 <Grid item xs={12}>
                   <Field
-                    name={'nome'}
+                    name={'name'}
                     label={'Nome'}
                     component={TextFieldWrapper}
                     fullWidth
                   />
                 </Grid>
                 <Grid item xs={12}>
-                  <Field
-                    name={'provincia'}
-                    label={'Provincia'}
-                    component={TextFieldWrapper}
-                    fullWidth
-                  />
+                  <GooglePlacesAutocomplete
+                    placeholder={'Inserisci indirizzo / Nome attività'}
+                    initialValue={values.address}
+                    renderSuggestions={(active, suggestions, onSelectSuggestion) => formatSuggestion(classes, active, suggestions, onSelectSuggestion)}
+                    autocompletionRequest={{ componentRestrictions: { country: 'it' } }}
+                    renderInput={formatInput}
+                    onSelect={async (val) => {
+                      try {
+                        const data = await geocodeByPlaceId(val.place_id)
+                        const coords = await getLatLng(data[0])
+                        form.mutators.setLocation({
+                          address: val,
+                          coords: coords
+                        })
+                      } catch (err) {
+                        console.log(err)
+                      }
+                    }}/>
                 </Grid>
                 <Grid item xs={12}>
                   <Field
-                    name={'citta'}
-                    label={'Città'}
-                    component={TextFieldWrapper}
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <Field
-                    name={'cap'}
-                    label={'CAP'}
-                    component={TextFieldWrapper}
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <Field
-                    name={'indirizzo'}
-                    label={'Indirizzo'}
-                    component={TextFieldWrapper}
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <Field
-                    name={'telefono'}
+                    name={'tel'}
                     label={'Telefono'}
                     component={TextFieldWrapper}
                     fullWidth
@@ -77,24 +85,12 @@ const ReportingPointPage = (props) => {
                 </Grid>
 
                 <Grid item xs={12}>
-                  <Typography color={'primary'}>Cos'è</Typography>
                   <Field
-                    name={'tipo'}
-                    rowsData={[
-                      {
-                        label: 'Privato',
-                        value: 'privato'
-                      },
-                      {
-                        label: 'Attività Commerciale',
-                        value: 'attivita_commerciale'
-                      },
-                      {
-                        label: 'Ente o Associazione',
-                        value: 'ente_associazione'
-                      }
-                    ]}
-                    component={RadioGroupWrapper}
+                    name={'pointType'}
+                    placeholder={'Categoria'}
+                    component={SelectWrapper}
+                    rowsData={getTypePointSelect()}
+                    fullWidth
                   />
                 </Grid>
                 <Grid item xs={12}>

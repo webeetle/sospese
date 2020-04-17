@@ -1,9 +1,10 @@
 import React from 'react'
 import { useStyles } from './searchPlace.style'
 import GooglePlacesAutocomplete, { geocodeByPlaceId, getLatLng } from 'react-google-places-autocomplete'
-import { Button, List, ListItem, ListItemText, Paper, TextField, Typography } from '@material-ui/core'
+import { Button, Typography } from '@material-ui/core'
 import { NearMe } from '@material-ui/icons'
 import { PropTypes } from 'prop-types'
+import { formatInput, formatSuggestion } from '../../utils/google.utils'
 
 const SearchPlace = (props) => {
   const { onCoordsFound } = props
@@ -16,42 +17,13 @@ const SearchPlace = (props) => {
   }
   const geo = navigator.geolocation
 
-  const formatInput = input => {
-    input.label = input.placeholder
-    input.fullWidth = true
-    delete input.placeholder
-    return (
-      <TextField
-        {...input}
-      />
-    )
-  }
-
-  const formatSuggestion = (active, suggestions, onSelectSuggestion) => (
-    <Paper elevation={0}>
-      <List className={classes.listResult}>
-        {
-          suggestions.map((suggestion) => (
-            <ListItem
-              key={suggestion.description}
-              button
-              onClick={(event) => onSelectSuggestion(suggestion, event)}
-            >
-              <ListItemText>{suggestion.description}</ListItemText>
-            </ListItem>
-          ))
-        }
-      </List>
-    </Paper>
-  )
-
   return (
     <div className={classes.root}>
       <Typography variant={'h5'} className={classes.title} align={'center'}>Cerca un punto</Typography>
       <div className={classes.google}>
         <GooglePlacesAutocomplete
           placeholder={'Inserisci indirizzo'}
-          renderSuggestions={formatSuggestion}
+          renderSuggestions={(active, suggestions, onSelectSuggestion) => formatSuggestion(classes, active, suggestions, onSelectSuggestion)}
           autocompletionRequest={{ componentRestrictions: { country: 'it' } }}
           renderInput={formatInput}
           onSelect={async (val) => {

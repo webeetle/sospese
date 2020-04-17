@@ -23,7 +23,7 @@ export const useStyles = makeStyles((theme) => ({
     bottom: 0,
     minHeight: 50,
     width: '100%',
-    backgroundColor: 'rgba(98, 199, 157, .5)'
+    backgroundColor: 'rgba(98, 199, 157, .7)'
   },
   detail: {
     padding: '10px 30px 30px 30px',

@@ -11,7 +11,7 @@ const createStore = (objToInject) => {
   return Store.create({
     utility: {
       snackbar: {},
-      locationStore: {}
+      typePoint: {}
     },
     pages: {
       home: {},

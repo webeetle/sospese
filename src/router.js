@@ -7,6 +7,7 @@ import SearchPage from './pages/search/search.page'
 import MapPage from './pages/map/map.page'
 import PointPage from './pages/point/id/point.page'
 import ReportingPointPage from './pages/point/reporting/reportingpoint.page'
+import ThanksPage from './pages/thanks/thanks.pages'
 
 function Router (props) {
   const routes = [
@@ -29,6 +30,10 @@ function Router (props) {
     {
       path: '/point/:id',
       component: PointPage
+    },
+    {
+      path: '/grazie',
+      component: ThanksPage
     }
   ]
 

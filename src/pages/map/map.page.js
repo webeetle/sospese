@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useStyles } from './map.style'
 import { Button, Grid, List, ListItem, Typography } from '@material-ui/core'
 import GoogleMapReact from 'google-map-react'
@@ -6,6 +6,7 @@ import { constants } from '../../constants'
 import { PropTypes } from 'prop-types'
 import { withRouter } from 'react-router'
 import { inject, observer } from 'mobx-react'
+import { getPointIcon } from '../../utils/point.utils'
 
 const bootstrap = {
   key: constants.googleAPIKey,
@@ -17,7 +18,7 @@ const MapPage = (props) => {
   const classes = useStyles()
   const { history, store: { pages: { map: locationStore, point: pointStore } } } = props
   // eslint-disable-next-line no-unused-vars
-  const [center, setCenter] = useState(null)
+  // const [center, setCenter] = useState(null)
 
   const defaultCenter = {
     lat: locationStore.lat,
@@ -25,39 +26,16 @@ const MapPage = (props) => {
   }
 
   useEffect(() => {
+    if (!locationStore.lat || !locationStore.lng) {
+      history.push('/search')
+      return
+    }
     locationStore.getNearPoints()
   }, [])
 
-  const getIcon = (type) => {
-    let src = ''
-    switch (type) {
-      case 'cesto':
-      case 'privato':
-        src = '/icons/cesto_point.svg'
-        break
-      case 'libreria':
-        src = '/icons/libreria_point.svg'
-        break
-      case 'bar':
-        src = '/icons/bar_point.svg'
-        break
-      case 'carrello':
-        src = '/icons/carrello_point.svg'
-        break
-      case 'centro raccolta':
-        src = '/icons/centro_raccolta_point.svg'
-        break
-      default:
-        src = '/icons/cesto_point.svg'
-        break
-    }
-    return src
-  }
-
   const formatListPoint = () => {
     return locationStore.points.length > 0 ? locationStore.points.map(item => {
-      const type = item.pointType[0]
-      const src = getIcon(type)
+      const src = getPointIcon(item.pointType)
       return (
         <React.Fragment key={item._id}>
           <ListItem className={classes.item}>
@@ -90,8 +68,7 @@ const MapPage = (props) => {
   }
   const formatPoints = () => {
     return locationStore.points.map(item => {
-      const type = item.pointType[0]
-      const src = getIcon(type)
+      const src = getPointIcon(item.pointType)
       const [lng, lat] = item.location.coordinates
       return (
         <img
@@ -111,7 +88,7 @@ const MapPage = (props) => {
         <GoogleMapReact
           bootstrapURLKeys={bootstrap}
           defaultCenter={defaultCenter}
-          center={center || defaultCenter}
+          /* center={center || defaultCenter} */
           defaultZoom={15}
         >
           {formatPoints()}
