@@ -1,12 +1,18 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 export const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    '& .clickable': {
+      cursor: 'pointer'
+    },
+  },
   titlePage: {
     background: '#FFF',
     color: theme.palette.secondary.main,
     fontWeight: 700,
-    padding: '10px 20px'
+    padding: '10px 20px',
+    display: 'flex',
+    alignItems: 'center',
   },
   imgHighlights: {
     height: '45vh',
@@ -14,8 +20,15 @@ export const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover!important',
     backgroundRepeat: 'no-repeat!important'
   },
+  imgAvatar:{
+    height: 200,
+    'border-radius': 100
+  },
   donationCount: {
     position: 'absolute',
+    [theme.breakpoints.up('sm')]: {
+      position: 'inherit',
+    },
     display: 'flex',
     alignItems: 'center',
     color: '#fff',
@@ -27,7 +40,12 @@ export const useStyles = makeStyles((theme) => ({
   },
   detail: {
     padding: '10px 30px 30px 30px',
-    '& .icon': { width: '100%' },
+    '& .icon': {
+      width: '100%',
+      [theme.breakpoints.up('sm')]: {
+        width: '20px',
+      }
+    },
     '& .title': {
       color: '#fff',
       fontWeight: 700
