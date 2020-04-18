@@ -26,3 +26,5 @@ jobs:
         git config --global user.name "${{secrets.name}}"
         git remote set-url origin https://${{secrets.token}}@github.com/${{secrets.name}}/sospese.git
         npm run deploy
+      env:
+        CI: false
