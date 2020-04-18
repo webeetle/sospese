@@ -10,6 +10,7 @@ import ReactGA from 'react-ga'
 
 const store = createStore()
 ReactGA.initialize('UA-1091978-71')
+ReactGA.pageview(window.location.pathname + window.location.search)
 ReactDOM.render(
   <Provider store={store}>
     <ThemeProvider theme={theme}>

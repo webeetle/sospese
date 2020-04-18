@@ -45,108 +45,114 @@ const ReportingPointPage = (props) => {
 
   return (
     <div className={classes.root}>
-      <Paper rounded className={classes.container}>
-        <Form
-          onSubmit={onSubmit}
-          validate={validate}
-          mutators={{
-            setLocation: setLocation
-          }}
-          render={({ values, form, handleSubmit }) => {
-            return (
-              <form
-                onSubmit={handleSubmit}
-              >
-                <Grid container spacing={2}>
-                  <Grid item xs={12}>
-                    <Typography variant={'h3'} className={classes.title}>Segnala nuovo punto</Typography>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Field
-                      name={'name'}
-                      label={'Nome'}
-                      component={TextFieldWrapper}
-                      fullWidth
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Field name={'address'}>
-                      {({ input, meta }) => {
-                        return (
-                          <GooglePlacesAutocomplete
-                            {...input}
-                            meta={meta}
-                            debounce={500}
-                            placeholder={'Inserisci indirizzo / Nome attività'}
-                            initialValue={values.address}
-                            renderSuggestions={(active, suggestions, onSelectSuggestion) => formatSuggestion(classes, active, suggestions, onSelectSuggestion)}
-                            autocompletionRequest={{ componentRestrictions: { country: 'it' } }}
-                            renderInput={(props) => {
-                              // eslint-disable-next-line
-                              props.label = props.placeholder
-                              props.fullWidth = true
-                              props.error = (meta.error && meta.touched)
-                              props.helperText = meta.touched ? meta.error : ''
-                              // eslint-disable-next-line
-                              delete props.placeholder
-                              return <TextField {...props} />
+        <Grid container>
+          <Grid item lg={3} md={2} sm={1}/>
+          <Grid item lg={6} md={8} sm={10}>
+            <Paper rounded className={classes.container}>
+              <Form
+                onSubmit={onSubmit}
+                validate={validate}
+                mutators={{
+                  setLocation: setLocation
+                }}
+                render={({ values, form, handleSubmit }) => {
+                  return (
+                    <form
+                      onSubmit={handleSubmit}
+                    >
+                      <Grid container spacing={2}>
+                        <Grid item xs={12}>
+                          <Typography variant={'h3'} className={classes.title}>Segnala nuovo punto</Typography>
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                          <Field
+                            name={'name'}
+                            label={'Nome'}
+                            component={TextFieldWrapper}
+                            fullWidth
+                          />
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                          <Field name={'address'}>
+                            {({ input, meta }) => {
+                              return (
+                                <GooglePlacesAutocomplete
+                                  {...input}
+                                  meta={meta}
+                                  debounce={500}
+                                  placeholder={'Inserisci indirizzo / Nome attività'}
+                                  initialValue={values.address}
+                                  renderSuggestions={(active, suggestions, onSelectSuggestion) => formatSuggestion(classes, active, suggestions, onSelectSuggestion)}
+                                  autocompletionRequest={{ componentRestrictions: { country: 'it' } }}
+                                  renderInput={(props) => {
+                                    // eslint-disable-next-line
+                                    props.label = props.placeholder
+                                    props.fullWidth = true
+                                    props.error = (meta.error && meta.touched)
+                                    props.helperText = meta.touched ? meta.error : ''
+                                    // eslint-disable-next-line
+                                    delete props.placeholder
+                                    return <TextField {...props} />
+                                  }}
+                                  onSelect={async (val) => {
+                                    try {
+                                      const data = await geocodeByPlaceId(val.place_id)
+                                      const coords = await getLatLng(data[0])
+                                      form.mutators.setLocation({
+                                        address: val,
+                                        coords: coords
+                                      })
+                                    } catch (err) {
+                                      console.log(err)
+                                    }
+                                  }}/>
+                              )
                             }}
-                            onSelect={async (val) => {
-                              try {
-                                const data = await geocodeByPlaceId(val.place_id)
-                                const coords = await getLatLng(data[0])
-                                form.mutators.setLocation({
-                                  address: val,
-                                  coords: coords
-                                })
-                              } catch (err) {
-                                console.log(err)
-                              }
-                            }}/>
-                        )
-                      }}
-                    </Field>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Field
-                      name={'tel'}
-                      label={'Telefono'}
-                      component={TextFieldWrapper}
-                      fullWidth
-                    />
-                  </Grid>
+                          </Field>
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                          <Field
+                            name={'tel'}
+                            label={'Telefono'}
+                            component={TextFieldWrapper}
+                            fullWidth
+                          />
+                        </Grid>
 
-                  <Grid item xs={12}>
-                    <Field
-                      name={'pointType'}
-                      placeholder={'Categoria'}
-                      component={SelectWrapper}
-                      rowsData={getTypePointSelect()}
-                      fullWidth
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Field
-                      name={'note'}
-                      label={'Note'}
-                      component={TextFieldWrapper}
-                      rows={5}
-                      multiline
-                      fullWidth
-                    />
-                  </Grid>
-                  <Grid item xs={12} className={classes.submit}>
-                    <Button color={'primary'} variant={'contained'} onClick={form.reset}>svuota</Button>
-                    <Button color={'secondary'} variant={'contained'} onClick={handleSubmit}
-                            disabled={form.error}>INVIA</Button>
-                  </Grid>
+                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                          <Field
+                            name={'pointType'}
+                            placeholder={'Categoria'}
+                            component={SelectWrapper}
+                            rowsData={getTypePointSelect()}
+                            fullWidth
+                          />
+                        </Grid>
+                        <Grid item xs={12}>
+                          <Field
+                            name={'note'}
+                            label={'Note'}
+                            component={TextFieldWrapper}
+                            rows={5}
+                            multiline
+                            fullWidth
+                            disableUnderline={true}
+                          />
+                        </Grid>
+                        <Grid item xs={12} className={classes.submit}>
+                          <Button color={'primary'} variant={'contained'} onClick={form.reset}>svuota</Button>
+                          <Button color={'secondary'} variant={'contained'} onClick={handleSubmit}
+                                  disabled={form.error}>INVIA</Button>
+                        </Grid>
 
-                </Grid>
-              </form>
-            )
-          }}
-        />
-      </Paper>
+                      </Grid>
+                    </form>
+                  )
+                }}
+              />
+            </Paper>
+          </Grid>
+        </Grid>
     </div>
   )
 }

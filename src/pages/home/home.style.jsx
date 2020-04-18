@@ -51,6 +51,7 @@ export const useStyles = makeStyles((theme) => ({
       '& .divider': {
         display: 'none',
         [theme.breakpoints.up('sm')]: {
+          'border-right': 'unset',
           display: 'block'
         }
       }
