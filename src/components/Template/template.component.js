@@ -24,7 +24,7 @@ const Template = props => {
               <img alt={'sospese'} src={'/logo.svg'} className={classes.logo} onClick={() => {
                 history.push('/')
               }}/>
-              <Typography>DOVE IL SEGNALE SEI TU</Typography>
+              <Typography>DONA, CONDIVIDI, LASCIA UN SEGNO</Typography>
             </div>
           </Toolbar>
         </AppBar>
@@ -50,6 +50,8 @@ const Template = props => {
         <Typography className={'andratuttobene'}>#andràtuttobene</Typography>
         <Typography className={'copyright'}>© 2020 <a rel="noopener noreferrer" href={'https://webeetle.com'}
                                                       target={'_blank'}>weBeetle srl</a></Typography>
+        <Typography><a href="https://www.iubenda.com/privacy-policy/29835063"
+                       className="iubenda-white no-brand iubenda-embed" title="Privacy Policy ">Privacy Policy</a></Typography>
       </div>
     </React.Fragment>
   )
