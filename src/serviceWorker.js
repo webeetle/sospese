@@ -130,7 +130,7 @@ function displayUpdateNotification () {
   const link = document.createElement('a')
   link.classList.add('update-notification')
   link.setAttribute('href', '#')
-  link.innerHTML = 'Update is available. Click here to install.'
+  link.innerHTML = 'Una nuova versione di Sospese è disponibile. Scaricala cliccando qui.'
 
   link.addEventListener('click', (e) => {
     e.preventDefault()

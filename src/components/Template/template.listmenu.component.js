@@ -52,7 +52,7 @@ const ListMenu = (props) => {
         <Grid item xs={12} justify={'center'}>
           <div className={classes.logoContainer}>
             <img alt={'sospese'} src={'/logo.svg'} className={classes.logo}/>
-            <Typography color={'secondary'}>DOVE IL SEGNALE SEI TU</Typography>
+            <Typography color={'secondary'}>DONA, CONDIVIDI, LASCIA UN SEGNO</Typography>
           </div>
         </Grid>
         <Grid item xs={12}>

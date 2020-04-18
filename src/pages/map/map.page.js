@@ -44,7 +44,7 @@ const MapPage = (props) => {
                 display: 'flex',
                 justifyContent: 'center'
               }}>
-                <img src={src} style={{ width: 40 }}/>
+                <img alt={'punto'} src={src} style={{ width: 40 }}/>
               </Grid>
               <Grid item xs={6} sm={6} md={9} lg={9}>
                 <Typography className={'title'}>{item.name}</Typography>

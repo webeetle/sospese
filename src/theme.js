@@ -1,6 +1,19 @@
 import { createMuiTheme } from '@material-ui/core'
 
 const theme = createMuiTheme({
+  '@global': {
+    '.update-notification': {
+      backgroundColor: '#222',
+      color: '#fff',
+      display: 'block',
+      position: 'fixed',
+      zIndex: 1000,
+      bottom: 0,
+      right: 0,
+      padding: '0.8em 1.2em',
+      textDecoration: 'none'
+    }
+  },
   palette: {
     primary: {
       main: '#62c79d',

@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [13.x]
+        node-version: [11.x]
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
@@ -26,3 +26,5 @@ jobs:
         git config --global user.name "${{secrets.name}}"
         git remote set-url origin https://${{secrets.token}}@github.com/${{secrets.name}}/sospese.git
         npm run deploy
+      env:
+        CI: false

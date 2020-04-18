@@ -35,14 +35,14 @@ const HomePage = (props) => {
         <ButtonGroup className={'actionButton'} variant="text" color="secondary">
           <Button onClick={() => history.push('/donations')}>
             <div>
-              <img src={'icons/heart.svg'} width={40}/>
+              <img alt={'cuore'} src={'icons/heart.svg'} width={40}/>
             </div>
             ho donato
           </Button>
           <div style={{ width: 20 }} className={'divider'}/>
           <Button onClick={() => history.push('/point/reporting')}>
             <div>
-              <img src={'icons/flag.svg'} width={40}/>
+              <img alt={'bandiera'} src={'icons/flag.svg'} width={40}/>
             </div>
             segnala punto
           </Button>
@@ -66,16 +66,16 @@ const HomePage = (props) => {
               enableMouseEvents
             >
               <div className={'slide'}>
-                <img src={'icons/map.svg'}/>
+                <img alt={'mappa'} src={'icons/map.svg'}/>
                 <Typography>Vai sulla <span>mappa</span>, inserisci il tuo indirizzo oppure attiva la
                   geolocalizzazione</Typography>
               </div>
               <div className={'slide'}>
-                <img src={'icons/pin_status.svg'}/>
+                <img alt={'status'} src={'icons/pin_status.svg'}/>
                 <Typography>Trova i <span>punti di ritiro e raccolta</span></Typography>
               </div>
               <div className={'slide'}>
-                <img src={'icons/donare_ritirare.svg'}/>
+                <img alt={'donare'} src={'icons/donare_ritirare.svg'}/>
                 <Typography>Raggiungi il punto con le dovute precauzioni e scegli
                   di <span>donare o di ritirare</span></Typography>
               </div>
@@ -96,7 +96,7 @@ const HomePage = (props) => {
                 <Paper className={'paper'} style={{ height: '100%' }}>
                   <div className={`${classes.containerBox} slide`}>
                     <div className={'alignment'}>
-                      <img src={'icons/map.svg'} width={60}/>
+                      <img alt={'mappa'} src={'icons/map.svg'} width={60}/>
                     </div>
                     <Typography>Vai sulla <span>mappa</span>, inserisci il tuo indirizzo oppure attiva
                       la
@@ -108,7 +108,7 @@ const HomePage = (props) => {
                 <Paper className={'paper'} style={{ height: '100%' }}>
                   <div className={`${classes.containerBox} slide`}>
                     <div className={'alignment'}>
-                      <img src={'icons/pin_status.svg'} width={60}/>
+                      <img alt={'status'} src={'icons/pin_status.svg'} width={60}/>
                     </div>
                     <Typography>Trova i <span>punti di ritiro e raccolta</span></Typography>
                   </div>
@@ -118,7 +118,7 @@ const HomePage = (props) => {
                 <Paper className={'paper'} style={{ height: '100%' }}>
                   <div className={`${classes.containerBox} slide`}>
                     <div className={'alignment'}>
-                      <img src={'icons/heart.svg'} width={60}/>
+                      <img alt={'cuore'} src={'icons/heart.svg'} width={60}/>
                     </div>
                     <Typography>Raggiungi il punto con le dovute precauzioni e scegli
                       di <span>donare o di ritirare</span></Typography>
@@ -147,13 +147,10 @@ const HomePage = (props) => {
             <Paper rounded className={'paper'}>
               <Typography className={'title'} variant={'h3'} align={'center'}>
                 {/* eslint-disable-next-line react/no-unescaped-entities */}
-                <img src={'icons/cesto.svg'}/> <span>Cos'è</span>
+                <img alt={'cesto'} src={'icons/cesto.svg'}/> <span>Cos'è</span>
               </Typography>
               <Typography className={'body'}>
-                Sospese è un progetto che mette in contatto persone che vogliono donare con persone che hanno bisogno di
-                sostegno. Un contenitore di segnalazioni di punti di raccolta e di ritiro di “cose sospese”, beni e
-                servizi
-                acquistati e lasciati a disposizione di chi ne ha bisogno.
+                Sospese è un contenitore di segnalazioni di punti di raccolta e di ritiro di “cose sospese”: beni e servizi acquistati e lasciati a disposizione di chi ne ha bisogno. Sospese è un progetto che punta a collegare e condividere azioni filantropiche e solidali.
               </Typography>
             </Paper>
           </div>
@@ -162,13 +159,10 @@ const HomePage = (props) => {
           <div className={classes.missionSection}>
             <Paper rounded className={'paper'}>
               <Typography className={'title'} variant={'h3'} align={'center'}>
-                <img src={'icons/sos.svg'}/> <span>Mission</span>
+                <img alt={'sos'} src={'icons/sos.svg'}/> <span>Mission</span>
               </Typography>
               <Typography className={'body'}>
-                Sospese è un progetto che mette in contatto persone che vogliono donare con persone che hanno bisogno di
-                sostegno. Un contenitore di segnalazioni di punti di raccolta e di ritiro di “cose sospese”, beni e
-                servizi
-                acquistati e lasciati a disposizione di chi ne ha bisogno.
+                Il nostro obiettivo è quello di potenziare la buona pratica di lasciare beni e servizi “sospesi” per le persone che ne hanno bisogno. Creare legami tra le persone mettendo in atto forme di attivismo digitale che abbiano un forte e concreto impatto sul tessuto sociale.
               </Typography>
             </Paper>
           </div>
