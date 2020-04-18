@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useStyles } from './point.style'
 import { Button, Grid, Hidden, IconButton, Paper, Typography } from '@material-ui/core'
-import { ThumbDown, ThumbUp, ArrowBackIos } from '@material-ui/icons'
+import { ArrowBackIos, ThumbDown, ThumbUp } from '@material-ui/icons'
 import { PropTypes } from 'prop-types'
 import { withRouter } from 'react-router'
 import { inject, observer } from 'mobx-react'
@@ -111,7 +111,7 @@ const DetailPC = (props) => {
             className={'distance'}>Distanza: {(pointStore.point.dist.calculated / 1000).toFixed(2)} KM</Typography>
           : null}
 
-        <MessageDonation classes={classes} pointStore={pointStore} />
+        <MessageDonation classes={classes} pointStore={pointStore}/>
         <Likes classes={classes} pointStore={pointStore} match={match}/>
       </Grid>
     </Grid>
@@ -124,8 +124,8 @@ DetailPC.propTypes = {
   match: PropTypes.object.isRequired
 }
 
-const MessageDonation = (props) => {
-  const { classes, pointStore } = props
+const MessageDonation = withRouter((props) => {
+  const { classes, pointStore, history } = props
 
   return (
     <div className={classes.donationCount}>
@@ -135,12 +135,14 @@ const MessageDonation = (props) => {
           <img alt={'cuore'} src={'/icons/heart_w.svg'}/>
         </Grid>
         <Grid item xs={4}>{pointStore.point.totalDonations} Donazioni Raggiunte</Grid>
-        <Grid item xs={4}><Button fullWidth size={'small'} variant={'contained'} color={'secondary'}>Ho
+        <Grid item xs={4}><Button fullWidth size={'small'} variant={'contained'} color={'secondary'} onClick={() => {
+          history.push('/donations')
+        }}>Ho
           Donato</Button></Grid>
       </Grid>
     </div>
   )
-}
+})
 
 MessageDonation.propTypes = {
   classes: PropTypes.object.isRequired,
@@ -161,12 +163,13 @@ const PointPage = (props) => {
 
   return (
     <div className={classes.root}>
-      <Typography variant={'h6'} className={classes.titlePage} onClick={() => history.push('/map')}><ArrowBackIos/> Ritorna ai punti Sospesi</Typography>
+      <Typography variant={'h6'} className={classes.titlePage}
+                  onClick={() => history.push('/map')}><ArrowBackIos/> Ritorna ai punti Sospesi</Typography>
       <Hidden smUp>
         <div className={classes.imgHighlights} style={{ background: `url('${addressGood}')` }}>
-          <MessageDonation classes={classes} pointStore={pointStore} />
+          <MessageDonation classes={classes} pointStore={pointStore}/>
         </div>
-        <Detail classes={classes} pointStore={pointStore} />
+        <Detail classes={classes} pointStore={pointStore}/>
         <Likes classes={classes} pointStore={pointStore} match={match}/>
       </Hidden>
       <Hidden xsDown>
@@ -175,7 +178,11 @@ const PointPage = (props) => {
           <Grid item lg={6} md={8} sm={10}>
             <div className={classes.detail} style={{ 'padding-bottom': 0 }}>
               <Grid container spacing={2}>
-                <Grid item lg={4} md={4} sm={4} style={{ display: 'flex', 'align-items': 'center', 'justify-content': 'center' }}>
+                <Grid item lg={4} md={4} sm={4} style={{
+                  display: 'flex',
+                  'align-items': 'center',
+                  'justify-content': 'center'
+                }}>
                   <img alt={'luogo'} className={classes.imgAvatar} src={`${addressGood}`}/>
                 </Grid>
                 <Grid item lg={8} md={8} sm={8}>
