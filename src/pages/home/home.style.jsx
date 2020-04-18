@@ -21,13 +21,38 @@ export const useStyles = makeStyles((theme) => ({
   },
   buttonSection: {
     flex: 1,
-    background: '#fff',
+    justifyContent: 'center',
+    display: 'flex',
+
+    [theme.breakpoints.up('sm')]: {
+      'margin-top': '-40px',
+    },
     '& > .actionButton': {
       width: '100%',
+      [theme.breakpoints.up('sm')]: {
+        width: '600px',
+      },
       '& .MuiButton-root': {
+        background: '#fff',
         flex: 1,
         fontWeight: 700,
-        padding: '15px 0'
+        padding: '15px 0',
+        [theme.breakpoints.up('sm')]: {
+          padding: 7,
+          'border-radius': 50,
+          border: '3px solid #C5CAE9',
+        }
+      },
+      '& .MuiButton-label': {
+        display: 'flex',
+        'flex-direction': 'column',
+        'justify-content': 'center',
+      },
+      '& .divider': {
+        display: 'none',
+        [theme.breakpoints.up('sm')]: {
+          display: 'block'
+        }
       }
     }
   },
@@ -79,7 +104,7 @@ export const useStyles = makeStyles((theme) => ({
   missionSection: {
     padding: 30,
     '& > .paper': {
-      marginBottom: 20,
+      // marginBottom: 20,
       padding: 30,
       '& > .body': {
         color: '#757575',
@@ -98,6 +123,34 @@ export const useStyles = makeStyles((theme) => ({
           marginLeft: 10
         }
       }
+    }
+  },
+
+  containerBox: {
+    padding: 30,
+    '& > .body': {
+      color: '#757575',
+      lineHeight: '1.2em',
+      fontSize: '16px',
+      marginTop: 20,
+    },
+    '& > .alignment': {
+      textAlign: 'center'
+    },
+    '& > .paper': {
+      marginBottom: 20,
+      padding: 30,
+      // '& > .title': {
+      //   fontWeight: 700,
+      //   display: 'flex',
+      //   justifyContent: 'center',
+      //   alignItems: 'center',
+      //   color: theme.palette.secondary.main,
+      //   fontSize: 30,
+      //   '& > span': {
+      //     marginLeft: 10
+      //   }
+      // }
     }
   }
 }))

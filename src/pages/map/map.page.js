@@ -40,16 +40,16 @@ const MapPage = (props) => {
         <React.Fragment key={item._id}>
           <ListItem className={classes.item}>
             <Grid container spacing={1}>
-              <Grid item xs={2}>
-                <img src={src} style={{ width: 30 }}/>
+              <Grid item xs={2} sm={2} md={1} lg={1} style={{ display: 'flex', justifyContent: 'center' }}>
+                <img src={src} style={{ width: 40 }}/>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={6} sm={6} md={9} lg={9}>
                 <Typography className={'title'}>{item.name}</Typography>
                 <Typography className={'distance'}>Distanza: {(item.dist.calculated / 1000).toFixed(2)} KM</Typography>
                 <Typography className={'address'}>{item.address}</Typography>
                 <Typography className={'contacts'}>{item.contacts ? item.contacts.join(' - ') : ''}</Typography>
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={4} sm={4} md={2} lg={2}>
                 <Button fullWidth size={'small'} variant={'contained'} color={'secondary'}>Ho Donato</Button>
                 <Button fullWidth size={'small'} variant={'contained'} color={'primary'}
                         style={{ marginTop: 10 }}
