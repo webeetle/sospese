@@ -9,6 +9,7 @@ import PointPage from './pages/point/id/point.page'
 import ReportingPointPage from './pages/point/reporting/reportingpoint.page'
 import ThanksPage from './pages/thanks/thanks.pages'
 import DonationsPage from './pages/donations/donations.pages'
+import ThanksDonationPage from './pages/thanks/thanksdonation.pages'
 
 function Router (props) {
   const routes = [
@@ -39,6 +40,10 @@ function Router (props) {
     {
       path: '/donations',
       component: DonationsPage
+    },
+    {
+      path: '/donations/grazie',
+      component: ThanksDonationPage
     }
   ]
 

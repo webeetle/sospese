@@ -11,7 +11,10 @@ export const useStyles = makeStyles((theme) => ({
     position: 'relative',
     margin: '15px 30px',
     padding: 15,
-    color: '#757575'
+    color: '#757575',
+    '& .selfie': {
+      width: '100%'
+    }
   },
   dropzone: {
     width: '100px!important',
@@ -29,8 +32,9 @@ export const useStyles = makeStyles((theme) => ({
       display: 'none!important'
     },
     '& .imgUp': {
-      width: 50,
-      height: 50,
+      width: 40,
+      height: 40,
+      marginTop: 10,
       fill: theme.palette.secondary.main
     },
     '& input': {
@@ -42,6 +46,13 @@ export const useStyles = makeStyles((theme) => ({
     textTransform: 'uppercase',
     color: theme.palette.primary.main,
     fontWeight: 700,
+    textAlign: 'center'
+  },
+  subTitle: {
+    marginTop: 20,
+    fontSize: 18,
+    fontWeight: 700,
+    color: theme.palette.secondary.main,
     textAlign: 'center'
   },
   submit: {

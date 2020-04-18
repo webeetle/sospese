@@ -11,7 +11,6 @@ const MapStore = types.model('MapStore', {
     self.points = data
   },
   getNearPoints () {
-    console.log(self.lat, self.lng)
     axios.post(`${constants.api}/points/near`, {
       lat: self.lat,
       lng: self.lng,
