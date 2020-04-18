@@ -77,7 +77,7 @@ const Detail = (props) => {
   return <div className={classes.detail}>
     <Grid container spacing={2}>
       <Grid item xs={2}>
-        <img src={src} className={'icon'}/>
+        <img alt={'punto'} src={src} className={'icon'}/>
       </Grid>
       <Grid item xs={10}>
         <Typography className={'title'}>{pointStore.point.name}</Typography>
@@ -105,7 +105,7 @@ const DetailPC = (props) => {
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <Typography className={'title'} style={{ paddingBottom: 10 }}>
-          <img src={src} className={'icon'}/> {pointStore.point.name}</Typography>
+          <img alt={'icon'} src={src} className={'icon'}/> {pointStore.point.name}</Typography>
         {pointStore.point.dist
           ? <Typography
             className={'distance'}>Distanza: {(pointStore.point.dist.calculated / 1000).toFixed(2)} KM</Typography>
@@ -132,7 +132,7 @@ const MessageDonation = (props) => {
       <Grid container alignItems={'center'} spacing={2}>
         <Grid item xs={1}/>
         <Grid item xs={2}>
-          <img src={'/icons/heart_w.svg'}/>
+          <img alt={'cuore'} src={'/icons/heart_w.svg'}/>
         </Grid>
         <Grid item xs={4}>{pointStore.point.totalDonations} Donazioni Raggiunte</Grid>
         <Grid item xs={4}><Button fullWidth size={'small'} variant={'contained'} color={'secondary'}>Ho
@@ -176,7 +176,7 @@ const PointPage = (props) => {
             <div className={classes.detail} style={{ 'padding-bottom': 0 }}>
               <Grid container spacing={2}>
                 <Grid item lg={4} md={4} sm={4} style={{ display: 'flex', 'align-items': 'center', 'justify-content': 'center' }}>
-                  <img className={classes.imgAvatar} src={`${addressGood}`} alt={'store'}/>
+                  <img alt={'luogo'} className={classes.imgAvatar} src={`${addressGood}`}/>
                 </Grid>
                 <Grid item lg={8} md={8} sm={8}>
                   <DetailPC classes={classes} pointStore={pointStore} match={match}/>

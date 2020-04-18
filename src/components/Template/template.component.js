@@ -45,7 +45,7 @@ const Template = props => {
         {props.children}
       </div>
       <div className={classes.footer}>
-        <img src={'/icons/sos_footer.svg'} height={90}/>
+        <img alt={'sos'} src={'/icons/sos_footer.svg'} height={90}/>
         <Typography className={'grazie'}>GRAZIE!</Typography>
         <Typography className={'andratuttobene'}>#andràtuttobene</Typography>
         <Typography className={'copyright'}>© 2020 <a rel="noopener noreferrer" href={'https://webeetle.com'}

@@ -41,7 +41,7 @@ const DonationsPage = (props) => {
             return (
               <Grid container>
                 <Grid item xs={12}>
-                  {selfie ? <img className={'selfie'} src={selfie}/>
+                  {selfie ? <img alt={'selfie'} className={'selfie'} src={selfie}/>
                     : <React.Fragment>
                       <DropzoneArea
                         acceptedFiles={['image/jpeg', 'image/png', 'image/jpg']}

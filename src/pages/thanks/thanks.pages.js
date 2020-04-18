@@ -11,7 +11,7 @@ const ThanksPage = (props) => {
 
   return (
     <div className={classes.root}>
-      <img src={'/grazie.svg'}/>
+      <img alt={'grazie'} src={'/grazie.svg'}/>
       <Paper rounded className={classes.container}>
         <Typography className={classes.title}>GRAZIE PER LA SEGNALAZIONE!</Typography>
         <Grid container>
