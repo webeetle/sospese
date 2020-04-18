@@ -48,6 +48,21 @@ const Template = props => {
         <img alt={'sos'} src={'/icons/sos_footer.svg'} height={90}/>
         <Typography className={'grazie'}>GRAZIE!</Typography>
         <Typography className={'andratuttobene'}>#andràtuttobene</Typography>
+        <div>
+          <IconButton className={classes.social} href={'https://facebook.com/sospese.io'}>
+            <img src="icons/facebook.svg" alt="facebook" height={35} width={35}/>
+          </IconButton>
+          <IconButton className={classes.social} href={'https://twitter.com/SospeseI'}>
+            <img src="icons/twitter.svg" alt="twitter" height={35} width={35}/>
+          </IconButton>
+          <IconButton className={classes.social} href={'https://www.instagram.com/sospese.io/'}>
+            <img src="icons/instagram.svg" alt="instagram" height={35} width={35}/>
+          </IconButton>
+          <IconButton className={classes.social} href={'https://github.com/webeetle/sospese'}>
+            <img src="icons/github.svg" alt="github" height={35} width={35}/>
+          </IconButton>
+        </div>
+
         <Typography className={'copyright'}>© 2020 <a rel="noopener noreferrer" href={'https://webeetle.com'}
                                                       target={'_blank'}>weBeetle srl</a></Typography>
         <Typography><a href="https://www.iubenda.com/privacy-policy/29835063"
