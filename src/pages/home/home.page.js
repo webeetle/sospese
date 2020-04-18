@@ -33,7 +33,7 @@ const HomePage = (props) => {
 
       <div className={classes.buttonSection}>
         <ButtonGroup className={'actionButton'} variant="text" color="secondary">
-          <Button>ho donato</Button>
+          <Button onClick={() => history.push('/donations')}>ho donato</Button>
           <Button onClick={() => history.push('/point/reporting')}>segnala punto</Button>
         </ButtonGroup>
       </div>

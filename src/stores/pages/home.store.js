@@ -14,10 +14,6 @@ const HomeStore = types.model('HomeStore', {
     axios.get(`${constants.api}/points/stats`)
       .then(self.successStats)
       .catch(console.log)
-    /* return {
-      points: 134,
-      donations: 65
-    } */
   }
 }))
 

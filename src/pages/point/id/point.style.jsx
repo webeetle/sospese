@@ -9,7 +9,7 @@ export const useStyles = makeStyles((theme) => ({
     padding: '10px 20px'
   },
   imgHighlights: {
-    height: '30vh',
+    height: '45vh',
     position: 'relative',
     backgroundSize: 'cover!important',
     backgroundRepeat: 'no-repeat!important'
@@ -71,6 +71,9 @@ export const useStyles = makeStyles((theme) => ({
     display: 'flex',
     '& .MuiIconButton-root':{
       color: '#fff'
+    },
+    '& .MuiIconButton-root.Mui-disabled':{
+      color: '#a9a9a9'
     },
     '& > div': {
       flex: 1,

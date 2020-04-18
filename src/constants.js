@@ -1,7 +1,7 @@
 // prod
 const constants = {
   googleAPIKey: 'AIzaSyCPghe4Rnh2hPXSqvWe_pdNxl-JDOxrG3Q',
-  api: 'http://localhost:3001'
+  api: 'https://api.sospese.io:3000'
 }
 
 // dev

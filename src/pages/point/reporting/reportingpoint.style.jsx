@@ -12,7 +12,7 @@ export const useStyles = makeStyles((theme) => ({
     position: 'relative',
     margin: '15px 30px',
     padding: 30,
-    color: '#757575',
+    color: '#757575'
   },
   submit: {
     textAlign: 'right',
@@ -30,7 +30,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   geoButton: {
     borderRadius: 0,
-    color: '#fff',
+    color: '#fff'
   },
   listResult: {
     position: 'absolute',

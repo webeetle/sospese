@@ -12,6 +12,15 @@ const PointPage = (props) => {
   const classes = useStyles()
   const { history, match, store: { pages: { point: pointStore } } } = props
 
+  const thumbDisabled = () => {
+    if (localStorage.getItem('vote')) {
+      const aVote = JSON.parse(localStorage.getItem('vote'))
+      return !!(aVote[pointStore.point._id])
+    } else {
+      return false
+    }
+  }
+
   useEffect(() => {
     pointStore.getPoint(match.params.id)
   }, [])
@@ -23,7 +32,7 @@ const PointPage = (props) => {
       <Typography variant={'h6'} className={classes.titlePage} onClick={() => history.push('/map')}>Ritorna ai punti
         Sospesi</Typography>
       <div className={classes.imgHighlights}
-           style={{ background: `url('https://maps.googleapis.com/maps/api/streetview?size=800x800&location=${pointStore.point.lat},${pointStore.point.lng}&fov=90&heading=0&pitch=0&key=${constants.googleAPIKey}')` }}>
+           style={{ background: `url('https://maps.googleapis.com/maps/api/streetview?size=800x800&location=${pointStore.point.address}&key=${constants.googleAPIKey}')` }}>
         <div className={classes.donationCount}>
           <Grid container alignItems={'center'} spacing={2}>
             <Grid item xs={1}/>
@@ -52,7 +61,7 @@ const PointPage = (props) => {
         <Paper rounded className={'paper'}>
           <Typography className={'address'}>{pointStore.point.address}</Typography>
           <Typography
-            className={'contacts'}>{pointStore.point.contacts ? pointStore.point.contacts.join(' - ') : ''}</Typography>
+            className={'contacts'}>Contatti: {pointStore.point.contacts ? pointStore.point.contacts.join(' - ') : ''}</Typography>
           <Typography className={classes.noteTitle}>Note</Typography>
           <div className={classes.notes}>
             {pointStore.point.note}
@@ -61,12 +70,18 @@ const PointPage = (props) => {
       </div>
       <div className={classes.likes}>
         <div>
-          <Typography variant={'h4'}><IconButton onClick={() => {
+          <Typography variant={'h4'}><IconButton disabled={thumbDisabled()} onClick={() => {
+            pointStore.vote({ type: 'up' }, () => {
+              pointStore.getPoint(match.params.id, true)
+            })
           }}><ThumbUp/></IconButton></Typography>
           <Typography variant={'p'}>{pointStore.point.thumbsUp} CONFERME</Typography>
         </div>
         <div>
-          <Typography variant={'h4'}><IconButton onClick={() => {
+          <Typography variant={'h4'}><IconButton disabled={thumbDisabled()} onClick={() => {
+            pointStore.vote({ type: 'down' }, () => {
+              pointStore.getPoint(match.params.id, true)
+            })
           }}><ThumbDown/></IconButton></Typography>
           <Typography variant={'p'}>{pointStore.point.thumbsDown} SMENTITE</Typography>
         </div>

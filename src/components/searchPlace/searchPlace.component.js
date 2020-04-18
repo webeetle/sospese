@@ -22,6 +22,7 @@ const SearchPlace = (props) => {
       <Typography variant={'h5'} className={classes.title} align={'center'}>Cerca un punto</Typography>
       <div className={classes.google}>
         <GooglePlacesAutocomplete
+          debounce={500}
           placeholder={'Inserisci indirizzo'}
           renderSuggestions={(active, suggestions, onSelectSuggestion) => formatSuggestion(classes, active, suggestions, onSelectSuggestion)}
           autocompletionRequest={{ componentRestrictions: { country: 'it' } }}

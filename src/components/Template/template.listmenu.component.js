@@ -15,15 +15,15 @@ const paths = [
   },
   {
     name: 'ho donato',
-    href: '/'
+    href: '/donations'
   },
   {
     name: 'segnala un punto',
-    href: '/'
+    href: '/point/reporting'
   },
   {
     name: 'supporters',
-    href: '/'
+    href: '/supporters'
   }
 ]
 
