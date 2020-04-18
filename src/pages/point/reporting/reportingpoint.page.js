@@ -18,7 +18,6 @@ const ReportingPointPage = (props) => {
 
   const setLocation = (args, state, utils) => {
     const location = args[0]
-    console.log(location.address)
     utils.changeValue(state, 'address', () => location.address.description)
     utils.changeValue(state, 'lat', () => location.coords.lat)
     utils.changeValue(state, 'lng', () => location.coords.lng)

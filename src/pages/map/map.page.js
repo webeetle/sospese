@@ -40,7 +40,10 @@ const MapPage = (props) => {
         <React.Fragment key={item._id}>
           <ListItem className={classes.item}>
             <Grid container spacing={1}>
-              <Grid item xs={2} sm={2} md={1} lg={1} style={{ display: 'flex', justifyContent: 'center' }}>
+              <Grid item xs={2} sm={2} md={1} lg={1} style={{
+                display: 'flex',
+                justifyContent: 'center'
+              }}>
                 <img src={src} style={{ width: 40 }}/>
               </Grid>
               <Grid item xs={6} sm={6} md={9} lg={9}>
@@ -50,7 +53,10 @@ const MapPage = (props) => {
                 <Typography className={'contacts'}>{item.contacts ? item.contacts.join(' - ') : ''}</Typography>
               </Grid>
               <Grid item xs={4} sm={4} md={2} lg={2}>
-                <Button fullWidth size={'small'} variant={'contained'} color={'secondary'}>Ho Donato</Button>
+                <Button fullWidth size={'small'} variant={'contained'} color={'secondary'} onClick={() => {
+                  pointStore.setPoint(item)
+                  history.push('/donations')
+                }}>Ho Donato</Button>
                 <Button fullWidth size={'small'} variant={'contained'} color={'primary'}
                         style={{ marginTop: 10 }}
                         onClick={() => {
@@ -73,6 +79,10 @@ const MapPage = (props) => {
       return (
         <img
           key={item._id}
+          onClick={() => {
+            pointStore.setPoint(item)
+            history.push(`/point/${item._id}`)
+          }}
           src={src}
           lat={lat}
           lng={lng}
@@ -89,7 +99,7 @@ const MapPage = (props) => {
           bootstrapURLKeys={bootstrap}
           defaultCenter={defaultCenter}
           /* center={center || defaultCenter} */
-          defaultZoom={15}
+          defaultZoom={13}
         >
           {formatPoints()}
           <img

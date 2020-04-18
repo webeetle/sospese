@@ -43,7 +43,9 @@ const PointPage = (props) => {
               <img src={'/icons/heart_w.svg'}/>
             </Grid>
             <Grid item xs={4}>{pointStore.point.totalDonations} Donazioni Raggiunte</Grid>
-            <Grid item xs={4}><Button fullWidth size={'small'} variant={'contained'} color={'secondary'}>Ho
+            <Grid item xs={4}><Button fullWidth size={'small'} variant={'contained'} color={'secondary'} onClick={() => {
+              history.push('/donations')
+            }}>Ho
               Donato</Button></Grid>
           </Grid>
         </div>
