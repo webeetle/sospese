@@ -17,7 +17,7 @@ export const useStyles = makeStyles((theme) => ({
     width: '100px!important',
     height: '100px!important',
     minHeight: '100px!important',
-    backgroundColor: `${theme.palette.secondary.main}!important`,
+    backgroundColor: `${theme.palette.secondary.light}!important`,
     border: '0!important',
     borderRadius: '100%',
     display: 'flex',
@@ -31,7 +31,7 @@ export const useStyles = makeStyles((theme) => ({
     '& .imgUp': {
       width: 50,
       height: 50,
-      fill: '#FFF'
+      fill: theme.palette.secondary.main
     },
     '& input': {
       width: '100%'

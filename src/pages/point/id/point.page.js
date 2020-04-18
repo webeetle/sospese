@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useStyles } from './point.style'
 import { Button, Grid, IconButton, Paper, Typography } from '@material-ui/core'
 import { ThumbDown, ThumbUp } from '@material-ui/icons'
@@ -11,6 +11,7 @@ import { constants } from '../../../constants'
 const PointPage = (props) => {
   const classes = useStyles()
   const { history, match, store: { pages: { point: pointStore } } } = props
+  const [addressGood, setAddressGood] = useState('')
 
   const thumbDisabled = () => {
     if (localStorage.getItem('vote')) {
@@ -20,9 +21,11 @@ const PointPage = (props) => {
       return false
     }
   }
-
   useEffect(() => {
-    pointStore.getPoint(match.params.id)
+    pointStore.getPoint(match.params.id, false, (point) => {
+      const val = `url('https://maps.googleapis.com/maps/api/streetview?size=800x800&location=${encodeURI(point.address.replace('"', '').replace('&', '').replace('\'', ''))}&key=${constants.googleAPIKey}')`
+      setAddressGood(val)
+    })
   }, [])
 
   const src = pointStore.point.pointType ? getPointIcon(pointStore.point.pointType) : ''
@@ -32,7 +35,7 @@ const PointPage = (props) => {
       <Typography variant={'h6'} className={classes.titlePage} onClick={() => history.push('/map')}>Ritorna ai punti
         Sospesi</Typography>
       <div className={classes.imgHighlights}
-           style={{ background: `url('https://maps.googleapis.com/maps/api/streetview?size=800x800&location=${pointStore.point.address}&key=${constants.googleAPIKey}')` }}>
+           style={{ background: `${addressGood}` }}>
         <div className={classes.donationCount}>
           <Grid container alignItems={'center'} spacing={2}>
             <Grid item xs={1}/>

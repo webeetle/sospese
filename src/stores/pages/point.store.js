@@ -8,13 +8,17 @@ const PointStore = types.model('PointStore', {
   setPoint (point) {
     self.point = point
   },
-  getPoint (id, force = false) {
+  getPoint (id, force = false, callback = () => {
+  }) {
     if (Object.keys(self.point).length === 0 || force) {
       axios.get(`${constants.api}/points/${id}`)
         .then(({ data }) => {
           self.setPoint(data)
+          callback(self.point)
         })
         .catch(console.log)
+    } else {
+      callback(self.point)
     }
   },
   reportingPoint (point, callback) {
