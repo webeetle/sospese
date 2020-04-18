@@ -6,7 +6,7 @@ const constants = {
 
 // dev
 if (process.env.NODE_ENV === 'development') {
-  constants.api = 'https://7f54a381.ngrok.io/api'
+  constants.api = 'https://api.sospese.io/api'
 }
 
 export { constants }
