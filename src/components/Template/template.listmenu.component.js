@@ -22,8 +22,8 @@ const paths = [
     href: '/point/reporting'
   },
   {
-    name: 'supporters',
-    href: '/supporters'
+    name: 'credits',
+    href: '/credits'
   }
 ]
 

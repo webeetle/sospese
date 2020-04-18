@@ -70,8 +70,11 @@ export const useStyles = makeStyles((theme) => ({
       textTransform: 'uppercase'
     },
     '& > .copyright': {
-      marginTop: 50,
+      marginTop: 20,
       fontSize: '14px'
     }
+  },
+  social: {
+    padding:20
   }
 }))

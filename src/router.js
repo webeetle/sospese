@@ -10,6 +10,7 @@ import ReportingPointPage from './pages/point/reporting/reportingpoint.page'
 import ThanksPage from './pages/thanks/thanks.pages'
 import DonationsPage from './pages/donations/donations.pages'
 import ThanksDonationPage from './pages/thanks/thanksdonation.pages'
+import CreditsPage from './pages/credits/credits.page'
 
 function Router (props) {
   const routes = [
@@ -44,6 +45,10 @@ function Router (props) {
     {
       path: '/donations/grazie',
       component: ThanksDonationPage
+    },
+    {
+      path: '/credits',
+      component: CreditsPage
     }
   ]
 
