@@ -1,19 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 export const useStyles = makeStyles((theme) => ({
-  '@global': {
-    '.update-notification': {
-      backgroundColor: '#222',
-      color: '#fff',
-      display: 'block',
-      position: 'fixed',
-      zIndex: 1000,
-      bottom: 0,
-      right: 0,
-      padding: '0.8em 1.2em',
-      textDecoration: 'none'
-    }
-  },
   root: {
     flexGrow: 1,
     minHeight: '100%',
