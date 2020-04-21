@@ -10,7 +10,11 @@
 </div>
 
 ---
+## Cos'è
+
+Sospese è un contenitore di segnalazioni di punti di raccolta e di ritiro di “cose sospese”: beni e servizi acquistati e lasciati a disposizione di chi ne ha bisogno. Sospese è un progetto che punta a collegare e condividere azioni filantropiche e solidali.
+
 
 ## Mission
 
-Sospese è un progetto che mette in contatto persone che vogliono donare con persone che hanno bisogno di sostegno. Un contenitore di segnalazioni di punti di raccolta e di ritiro di “cose sospese”, beni e servizi acquistati e lasciati a disposizione di chi ne ha bisogno.
+Il nostro obiettivo è quello di potenziare la buona pratica di lasciare beni e servizi “sospesi” per le persone che ne hanno bisogno. Creare legami tra le persone mettendo in atto forme di attivismo digitale che abbiano un forte e concreto impatto sul tessuto sociale.
