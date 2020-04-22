@@ -29,6 +29,7 @@ const CreditsPage = () => {
                   <li>Gianluigi Catania</li>
                   <li>Davide D’Antonio</li>
                   <li>Marco Ferraioli</li>
+                  <li>Paolo Parente</li>
                   <li>Riccardo Tartaglia</li>
                 </ul>
               </div>
