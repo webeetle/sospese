@@ -9,12 +9,12 @@ import { getPointIcon } from '../../../utils/point.utils'
 import { constants } from '../../../constants'
 
 const Likes = (props) => {
-  const { classes, pointStore, match } = props
+  const { classes, match, onVote, thumbsUp, thumbsDown } = props
 
   function thumbDisabled () {
     if (localStorage.getItem('vote')) {
       const aVote = JSON.parse(localStorage.getItem('vote'))
-      return !!(aVote[pointStore.point._id])
+      return !!(aVote[match.params.id])
     } else {
       return false
     }
@@ -22,20 +22,12 @@ const Likes = (props) => {
 
   return <div className={classes.likes}>
     <div>
-      <Typography variant={'h4'}><IconButton disabled={thumbDisabled()} onClick={() => {
-        pointStore.vote({ type: 'up' }, () => {
-          pointStore.getPoint(match.params.id, true)
-        })
-      }}><ThumbUp/></IconButton></Typography>
-      <Typography variant={'p'}>{pointStore.point.thumbsUp} CONFERME</Typography>
+      <Typography variant={'h4'}><IconButton disabled={thumbDisabled()} onClick={() => onVote('up')}><ThumbUp/></IconButton></Typography>
+      <Typography variant={'p'}>{thumbsUp} CONFERME</Typography>
     </div>
     <div>
-      <Typography variant={'h4'}><IconButton disabled={thumbDisabled()} onClick={() => {
-        pointStore.vote({ type: 'down' }, () => {
-          pointStore.getPoint(match.params.id, true)
-        })
-      }}><ThumbDown/></IconButton></Typography>
-      <Typography variant={'p'}>{pointStore.point.thumbsDown} SMENTITE</Typography>
+      <Typography variant={'h4'}><IconButton disabled={thumbDisabled()} onClick={() => onVote('down')}><ThumbDown/></IconButton></Typography>
+      <Typography variant={'p'}>{thumbsDown} SMENTITE</Typography>
     </div>
   </div>
 }
@@ -43,6 +35,9 @@ const Likes = (props) => {
 Likes.propTypes = {
   classes: PropTypes.object.isRequired,
   pointStore: PropTypes.object.isRequired,
+  onVote: PropTypes.func.isRequired,
+  thumbsUp: PropTypes.number.isRequired,
+  thumbsDown: PropTypes.number.isRequired,
   match: PropTypes.object.isRequired
 }
 
@@ -112,7 +107,17 @@ const DetailPC = (props) => {
           : null}
 
         <MessageDonation classes={classes} pointStore={pointStore}/>
-        <Likes classes={classes} pointStore={pointStore} match={match}/>
+        <Likes
+          classes={classes}
+          thumbsUp={pointStore.point.thumbsUp}
+          thumbsDown={pointStore.point.thumbsDown}
+          onVote={(type) => {
+            pointStore.vote({ type: type }, () => {
+              pointStore.getPoint(match.params.id, true)
+            })
+          }}
+          match={match}
+        />
       </Grid>
     </Grid>
   </div>
@@ -170,7 +175,17 @@ const PointPage = (props) => {
           <MessageDonation classes={classes} pointStore={pointStore}/>
         </div>
         <Detail classes={classes} pointStore={pointStore}/>
-        <Likes classes={classes} pointStore={pointStore} match={match}/>
+        <Likes
+          classes={classes}
+          thumbsUp={pointStore.point.thumbsUp}
+          thumbsDown={pointStore.point.thumbsDown}
+          onVote={(type) => {
+            pointStore.vote({ type: type }, () => {
+              pointStore.getPoint(match.params.id, true)
+            })
+          }}
+          match={match}
+        />
       </Hidden>
       <Hidden xsDown>
         <Grid container>

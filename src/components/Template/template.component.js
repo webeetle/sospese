@@ -50,16 +50,16 @@ const Template = props => {
         <Typography className={'andratuttobene'}>#andràtuttobene</Typography>
         <div>
           <IconButton className={classes.social} href={'https://facebook.com/sospese.io'}>
-            <img src="icons/facebook.svg" alt="facebook" height={35} width={35}/>
+            <img src={'/icons/facebook.svg'} alt="facebook" height={35} width={35}/>
           </IconButton>
           <IconButton className={classes.social} href={'https://twitter.com/SospeseI'}>
-            <img src="icons/twitter.svg" alt="twitter" height={35} width={35}/>
+            <img src={'/icons/twitter.svg'} alt="twitter" height={35} width={35}/>
           </IconButton>
           <IconButton className={classes.social} href={'https://www.instagram.com/sospese.io/'}>
-            <img src="icons/instagram.svg" alt="instagram" height={35} width={35}/>
+            <img src={'/icons/instagram.svg'} alt="instagram" height={35} width={35}/>
           </IconButton>
           <IconButton className={classes.social} href={'https://github.com/webeetle/sospese'}>
-            <img src="icons/github.svg" alt="github" height={35} width={35}/>
+            <img src={'/icons/github.svg'} alt="github" height={35} width={35}/>
           </IconButton>
         </div>
 

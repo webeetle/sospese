@@ -2,21 +2,68 @@
 <html lang="it">
 <head>
   <meta charset="utf-8"/>
+
+  <!-- Primary Meta Tags -->
+  <title>Sospese.io | Dona, Condividi, Lascia un segno</title>
+  <meta name="title" content="Sospese.io | Dona, Condividi, Lascia un segno">
+  <meta name="description" content="Sospese è un contenitore di segnalazioni di punti di raccolta e di ritiro di “cose sospese”: beni e servizi acquistati e lasciati a disposizione di chi ne ha bisogno. Sospese è un progetto che punta a collegare e condividere azioni filantropiche e solidali.">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sospese.io/">
+  <meta property="og:title" content="Sospese.io | Dona, Condividi, Lascia un segno">
+  <meta property="og:description" content="Sospese è un contenitore di segnalazioni di punti di raccolta e di ritiro di “cose sospese”: beni e servizi acquistati e lasciati a disposizione di chi ne ha bisogno. Sospese è un progetto che punta a collegare e condividere azioni filantropiche e solidali.">
+  <meta property="og:image" content="%PUBLIC_URL%/sospese_io.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://sospese.io/">
+  <meta property="twitter:title" content="Sospese.io | Dona, Condividi, Lascia un segno">
+  <meta property="twitter:description" content="Sospese è un contenitore di segnalazioni di punti di raccolta e di ritiro di “cose sospese”: beni e servizi acquistati e lasciati a disposizione di chi ne ha bisogno. Sospese è un progetto che punta a collegare e condividere azioni filantropiche e solidali.">
+  <meta property="twitter:image" content="%PUBLIC_URL%/sospese_io.png">
+
+
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="theme-color" content="#000000"/>
-  <meta
-    name="description"
-    content="Un'app per sapere dove donare"
-  />
+  <meta name="theme-color" content="#404ea7"/>
 
   <script type="text/javascript"
           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPghe4Rnh2hPXSqvWe_pdNxl-JDOxrG3Q&libraries=places"></script>
 
-  <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
+  <script type="text/javascript">(function (w, d) {
+    var loader = function () {
+      var s = d.createElement('script'), tag = d.getElementsByTagName('script')[0]
+      s.src = 'https://cdn.iubenda.com/iubenda.js'
+      tag.parentNode.insertBefore(s, tag)
+    }
+    if (w.addEventListener) {
+      w.addEventListener('load', loader, false)
+    } else if (w.attachEvent) {
+      w.attachEvent('onload', loader)
+    } else {
+      w.onload = loader
+    }
+  })(window, document)</script>
   <script type="text/javascript">
-    var _iub = _iub || [];
-    _iub.csConfiguration = {"lang":"it","siteId":1860583,"cookiePolicyId":29835063, "banner":{ "acceptButtonDisplay":true,"customizeButtonDisplay":true,"position":"float-top-center","acceptButtonColor":"#62C79D","acceptButtonCaptionColor":"white","customizeButtonColor":"#3F51B5","customizeButtonCaptionColor":"#FFFFFF","rejectButtonColor":"#0073CE","rejectButtonCaptionColor":"white","textColor":"black","backgroundColor":"white" }};
+    var _iub = _iub || []
+    _iub.csConfiguration = {
+      'lang': 'it',
+      'siteId': 1860583,
+      'cookiePolicyId': 29835063,
+      'banner': {
+        'acceptButtonDisplay': true,
+        'customizeButtonDisplay': true,
+        'position': 'float-top-center',
+        'acceptButtonColor': '#62C79D',
+        'acceptButtonCaptionColor': 'white',
+        'customizeButtonColor': '#3F51B5',
+        'customizeButtonCaptionColor': '#FFFFFF',
+        'rejectButtonColor': '#0073CE',
+        'rejectButtonCaptionColor': 'white',
+        'textColor': 'black',
+        'backgroundColor': 'white'
+      }
+    }
   </script>
   <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
 
@@ -49,7 +96,6 @@
     work correctly both with client-side routing and a non-root public URL.
     Learn how to configure a non-root public URL by running `npm run build`.
   -->
-  <title>SOSPESE</title>
 </head>
 <body>
 <noscript>You need to enable JavaScript to run this app.</noscript>
