@@ -1,0 +1,8 @@
+{
+  "appId": "com.webeetle.sospese",
+  "appName": "sospese",
+  "bundledWebRuntime": false,
+  "npmClient": "yarn",
+  "webDir": "build",
+  "cordova": {}
+}
