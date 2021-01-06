@@ -10,7 +10,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "@webeetle/core-sdk": "^1.2.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "final-form": "^4.19.1",
     "google-map-react": "^1.1.7",
     "material-ui-dropzone": "^2.5.0",
